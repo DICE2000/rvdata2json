@@ -14,6 +14,9 @@ require_relative 'rgss3'
 
 #追加メソッド
 def restore_rvdata2(list)
+	if list.class == Integer || list.class == TrueClass || list.class == FalseClass 
+		return list
+	end
 	return unless list.has_key?("json_class")
 	obj = nil
 	case list["json_class"]
@@ -66,11 +69,12 @@ def iterate_setting_value(target, list)
 		elsif list[d.to_s].is_a?(Hash)
 			target.instance_variable_set(d, restore_rvdata2(list[d.to_s]))
 		# 値がクラスオブジェクトの配列
-		elsif list[d.to_s].is_a?(Array) && list[d.to_s][0].is_a?(Hash)
+		# some of array may be in this format [Integer, Obj1, Obj2] (ex. EventCommand->MoveRoute)
+		elsif list[d.to_s].is_a?(Array) && (list[d.to_s][0].is_a?(Hash) || list[d.to_s][1].is_a?(Hash))
 			data_trans = []
 			list[d.to_s].each{|d|
-				data_trans << restore_rvdata2(d)
-    	}
+					data_trans << restore_rvdata2(d)
+			}
     	target.instance_variable_set(d, data_trans)
 		else
 			target.instance_variable_set(d, list[d.to_s])
