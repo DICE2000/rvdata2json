@@ -1,3 +1,11 @@
+**LICENSE**
+
+このプロジェクトは、Gotcha Gotcha Games Inc.とYOJI OJIMAさんと[aotaku](https://gist.github.com/aoitaku/7822424)さんの著作物を含んでいます。  
+これらの著作権を侵害するような利用はできません。
+
+This project contains copyrighted material by Gatcha Gatcha Games Inc, YOJI OJIMA and [aotaku](https://gist.github.com/aoitaku/7822424). 
+You must not use the project in a way that infringes these copyrights.
+
 **NOTICE**
 
 あまりに古すぎるので書き直している最中です。  
